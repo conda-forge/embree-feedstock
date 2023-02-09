@@ -1,5 +1,5 @@
 {% set name = "embree" %}
-{% set version = "2.17.7" %}
+{% set version = "4.0.0" %}
 
 package:
   name: {{ name }}
@@ -8,15 +8,15 @@ package:
 source:
   fn: {{ name }}-{{ version }}.tar.gz  # [unix]
   url: https://github.com/{{ name }}/{{ name }}/releases/download/v{{ version }}/{{ name }}-{{ version }}.x86_64.linux.tar.gz  # [linux64]
-  sha256: 2c4bdacd8f3c3480991b99e85b8f584975ac181373a75f3e9675bf7efae501fe  # [linux64]
-  url: https://github.com/{{ name }}/{{ name }}/releases/download/v{{ version }}/{{ name }}-{{ version }}.x86_64.macosx.tar.gz  # [osx]
-  sha256: 48a2e81d6ccc8782c37f811afe2290969b288ee7264fdf5273eac349921c05df  # [osx]
+  sha256: 524842e2f141dca0db584c33a0821176373e7058f3ec2201bfb19d9e9a1b80b9  # [linux64]
+  url: https://github.com/{{ name }}/{{ name }}/releases/download/v{{ version }}/{{ name }}-{{ version }}.x86_64.macosx.zip  # [osx]
+  sha256: 837c49702d688623b48ba40ee10fb39f9dd39be6b73ccb4d910c32c5d5415836  # [osx]
   fn: {{ name }}-{{ version }}.zip  # [win]
   url: https://github.com/{{ name }}/{{ name }}/releases/download/v{{ version }}/{{ name }}-{{ version }}.x64.windows.zip  # [win]
-  sha256: 6fb7c828eef6cfe7186a5c002b52157a0d67471cf2c3072c3dced7d480071907  # [win]
+  sha256: 4f375d71d70b4fcf1dd18ca88f26a1255ff0d827bf3db62a88f204cc9089dc1f  # [win]
 
 build:
-  number: 3
+  number: 0
   detect_binary_files_with_prefix: true
   skip: true  # [aarch64 or ppc64le]
 
