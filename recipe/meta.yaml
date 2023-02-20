@@ -1,38 +1,44 @@
-{% set name = "embree" %}
-{% set version = "2.17.7" %}
+{% set name = "embree3" %}
+{% set version = "3.13.0" %}
+{% set sha256 = "4d86a69508a7e2eb8710d571096ad024b5174834b84454a8020d3a910af46f4f" %}
 
 package:
   name: {{ name }}
   version: {{ version }}
 
 source:
-  fn: {{ name }}-{{ version }}.tar.gz  # [unix]
-  url: https://github.com/{{ name }}/{{ name }}/releases/download/v{{ version }}/{{ name }}-{{ version }}.x86_64.linux.tar.gz  # [linux64]
-  sha256: 2c4bdacd8f3c3480991b99e85b8f584975ac181373a75f3e9675bf7efae501fe  # [linux64]
-  url: https://github.com/{{ name }}/{{ name }}/releases/download/v{{ version }}/{{ name }}-{{ version }}.x86_64.macosx.tar.gz  # [osx]
-  sha256: 48a2e81d6ccc8782c37f811afe2290969b288ee7264fdf5273eac349921c05df  # [osx]
-  fn: {{ name }}-{{ version }}.zip  # [win]
-  url: https://github.com/{{ name }}/{{ name }}/releases/download/v{{ version }}/{{ name }}-{{ version }}.x64.windows.zip  # [win]
-  sha256: 6fb7c828eef6cfe7186a5c002b52157a0d67471cf2c3072c3dced7d480071907  # [win]
+  fn: {{ version }}.tar.gz
+  url: https://github.com/embree/embree/archive/v{{ version }}.tar.gz
+  sha256: {{ sha256 }}
+  patches:
+    - use-conda-forge-ABI.patch
 
 build:
-  number: 3
-  detect_binary_files_with_prefix: true
-  skip: true  # [aarch64 or ppc64le]
+  number: 0
+  # upstream supports visual studio 13+
+  skip: true  # [win and vc<13]]
 
 requirements:
   build:
-    - python  # [win]
+    - {{ compiler('cxx') }}
+    - cmake
+    - make  # [unix]
+
+  host:
+    - tbb
+    - tbb-devel
+
+  run:
+    - tbb
 
 test:
   commands:
-    - test -f "${PREFIX}/lib/libembree.so"  # [linux]
-    - test -f "${PREFIX}/lib/libembree.dylib"  # [osx]
+    - test -f "${PREFIX}/lib/libembree3${SHLIB_EXT}"  # [not win]
 
 about:
   home: https://embree.github.io/
-  license: Apache 2.0
-  license_file: doc/LICENSE.txt
+  license: Apache-2.0
+  license_file: LICENSE.txt
   summary: High Performance Ray Tracing Kernels
 
 extra:
