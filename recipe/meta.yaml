@@ -1,4 +1,4 @@
-{% set name = "embree3" %}
+{% set name = "embree" %}
 {% set version = "3.13.0" %}
 {% set sha256 = "4d86a69508a7e2eb8710d571096ad024b5174834b84454a8020d3a910af46f4f" %}
 
