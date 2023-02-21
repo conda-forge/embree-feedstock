@@ -28,6 +28,5 @@ make -j ${CPU_COUNT}
 
 make install
 
-# remove tutorial models (which embree installed even when EMBREE_TUTORIALS=off)
-# this is easier than patching embree's cmake
-rm -rf ${PREFIX}/bin/models
+# remove unnecessary embree-vars files
+rm -rf ${PREFIX}/embree-vars.*

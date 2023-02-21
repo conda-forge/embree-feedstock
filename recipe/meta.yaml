@@ -1,6 +1,6 @@
 {% set name = "embree" %}
-{% set version = "3.13.0" %}
-{% set sha256 = "4d86a69508a7e2eb8710d571096ad024b5174834b84454a8020d3a910af46f4f" %}
+{% set version = "4.0.0" %}
+{% set sha256 = "bb967241f9516712a9f8e399ed7f756d7baeec3c85c223c0005ede8b95c9fa61" %}
 
 package:
   name: {{ name }}
@@ -33,7 +33,7 @@ requirements:
 
 test:
   commands:
-    - test -f "${PREFIX}/lib/libembree3${SHLIB_EXT}"  # [not win]
+    - test -f "${PREFIX}/lib/libembree4${SHLIB_EXT}"  # [not win]
 
 about:
   home: https://embree.github.io/
