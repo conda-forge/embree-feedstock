@@ -1,6 +1,7 @@
 bot:
   abi_migration_branches:
   - v2
+  - v3
 build_platform:
   osx_arm64: osx_64
 conda_build:
