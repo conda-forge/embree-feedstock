@@ -1,6 +1,6 @@
 {% set name = "embree" %}
-{% set version = "4.1.0" %}
-{% set sha256 = "117efd87d6dddbf7b164edd94b0bc057da69d6422a25366283cded57ed94738b" %}
+{% set version = "4.2.0" %}
+{% set sha256 = "b0479ce688045d17aa63ce6223c84b1cdb5edbf00d7eda71c06b7e64e21f53a0" %}
 
 package:
   name: {{ name }}
