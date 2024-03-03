@@ -14,9 +14,7 @@ source:
     - use-conda-forge-ABI.patch
 
 build:
-  number: 0
-  # upstream supports visual studio 13+
-  skip: true  # [win and vc<13]]
+  number: 1
 
 requirements:
   build:
@@ -27,9 +25,6 @@ requirements:
   host:
     - tbb
     - tbb-devel
-
-  run:
-    - tbb
 
 test:
   commands:
