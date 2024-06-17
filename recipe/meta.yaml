@@ -1,6 +1,6 @@
 {% set name = "embree" %}
-{% set version = "4.3.1" %}
-{% set sha256 = "824edcbb7a8cd393c5bdb7a16738487b21ecc4e1d004ac9f761e934f97bb02a4" %}
+{% set version = "4.3.2" %}
+{% set sha256 = "dc7bb6bac095b2e7bc64321435acd07c6137d6d60e4b79ec07bb0b215ddf81cb" %}
 
 package:
   name: {{ name }}
@@ -14,13 +14,14 @@ source:
     - use-conda-forge-ABI.patch
 
 build:
-  number: 1
+  number: 0
   run_exports:
     - {{ pin_subpackage('embree', max_pin='x.x') }}
 
 requirements:
   build:
     - {{ compiler('cxx') }}
+    - {{ stdlib("c") }}
     - cmake
     - make  # [unix]
 
