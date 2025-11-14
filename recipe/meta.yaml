@@ -16,7 +16,7 @@ source:
   sha256: 6fb7c828eef6cfe7186a5c002b52157a0d67471cf2c3072c3dced7d480071907  # [win]
 
 build:
-  number: 3
+  number: 4
   detect_binary_files_with_prefix: true
   skip: true  # [aarch64 or ppc64le]
 
