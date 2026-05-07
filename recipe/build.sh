@@ -19,7 +19,7 @@ cmake ${CMAKE_ARGS} ../ \
       -DCMAKE_BUILD_TYPE=Release \
       -DEMBREE_TUTORIALS=OFF \
       -DEMBREE_MAX_ISA="${max_isa}" \
-      -DEMBREE_ISPC_SUPPORT=OFF
+      -DEMBREE_ISPC_SUPPORT=ON
 
 # Compile
 make -j ${CPU_COUNT}
