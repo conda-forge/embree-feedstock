@@ -15,7 +15,7 @@ cmake ../ ^
       -DCMAKE_BUILD_TYPE=Release ^
       -DEMBREE_TUTORIALS=OFF ^
       -DEMBREE_MAX_ISA="AVX2" ^
-      -DEMBREE_ISPC_SUPPORT=OFF
+      -DEMBREE_ISPC_SUPPORT=ON
 if errorlevel 1 exit 1
 
 :: Compile
