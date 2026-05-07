@@ -191,6 +191,7 @@ Feedstock Maintainers
 =====================
 
 * [@Xarthisius](https://github.com/Xarthisius/)
+* [@eunos-1128](https://github.com/eunos-1128/)
 * [@joaander](https://github.com/joaander/)
 * [@scopatz](https://github.com/scopatz/)
 
