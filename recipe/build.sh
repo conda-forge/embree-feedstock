@@ -1,32 +1,32 @@
-# Make build directory
-mkdir build
-cd build
+#!/bin/bash
+set -exo pipefail
 
 # Specify location of TBB
 export TBBROOT=${PREFIX}
 
-if [ "${target_platform}" == "osx-arm64" ] || [ "${target_platform}" == "linux-aarch64" ]; then
-    max_isa="NEON"
-else
+if [[ "${target_platform}" == *"-64" ]] ; then
     max_isa="AVX2"
+elif [[ "${target_platform}" == "osx-arm64" ] || [ "${target_platform}" == "linux-aarch64" ]]; then
+    max_isa="NEON"
 fi
 
 # Configure
-cmake ${CMAKE_ARGS} ../ \
-      -DEMBREE_IGNORE_CMAKE_CXX_FLAGS=OFF \
-      -DCMAKE_INSTALL_PREFIX=${PREFIX} \
-      -DCMAKE_INSTALL_LIBDIR=lib \
-      -DCMAKE_BUILD_TYPE=Release \
-      -DEMBREE_TUTORIALS=OFF \
-      -DEMBREE_MAX_ISA="${max_isa}" \
-      -DEMBREE_ISPC_SUPPORT=ON
+cmake -S . -B build -G Ninja \
+    ${CMAKE_ARGS} \
+    -DBUILD_SHARED_LIBS=ON \
+    -DEMBREE_IGNORE_CMAKE_CXX_FLAGS=OFF \
+    -DEMBREE_TUTORIALS=OFF \
+    -DEMBREE_MAX_ISA="${max_isa}" \
+    -DEMBREE_ISPC_SUPPORT=ON
 
 # Compile
-make -j ${CPU_COUNT}
+cmake --build build --parallel ${CPU_COUNT}
 
-# embree lacks unit tests
+if [[ "${CONDA_BUILD_CROSS_COMPILATION:-}" != "1" || "${CROSSCOMPILING_EMULATOR:-}" != "" ]]; then
+    ctest -V --test-dir build --parallel ${CPU_COUNT}
+fi
 
-make install
+cmake --install build --parallel ${CPU_COUNT}
 
 # remove unnecessary embree-vars files
 rm -rf ${PREFIX}/embree-vars.*
