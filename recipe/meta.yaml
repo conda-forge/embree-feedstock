@@ -14,7 +14,7 @@ source:
     - use-conda-forge-ABI.patch
 
 build:
-  number: 0
+  number: 1
   run_exports:
     - {{ pin_subpackage('embree', max_pin='x.x') }}
 
@@ -24,6 +24,7 @@ requirements:
     - {{ stdlib("c") }}
     - cmake
     - make  # [unix]
+    - ispc
 
   host:
     - tbb
@@ -44,3 +45,4 @@ extra:
     - joaander
     - scopatz
     - Xarthisius
+    - eunos-1128
