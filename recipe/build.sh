@@ -6,8 +6,10 @@ export TBBROOT=${PREFIX}
 
 if [[ "${target_platform}" == *"-64" ]] ; then
     max_isa="AVX512"
-elif [[ "${target_platform}" == "osx-arm64" || "${target_platform}" == "linux-aarch64" ]]; then
+elif [[ "${target_platform}" == "linux-aarch64" ]]; then
     max_isa="NEON"
+elif [[ "${target_platform}" == "osx-arm64" ]]; then
+    max_isa="NEON2X"
 fi
 
 # Configure
