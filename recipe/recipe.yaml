@@ -1,0 +1,57 @@
+schema_version: 1
+
+context:
+  name: Embree
+  version: "4.4.1"
+  sha256: dcf338cc61b636c871ccf370e673bfd380c5ecb71ce49ad50f28e1d4ec9995dc
+
+package:
+  name: ${{ name|lower }}
+  version: ${{ version }}
+
+source:
+  url: https://github.com/RenderKit/embree/archive/refs/tags/v${{ version }}.tar.gz
+  sha256: ${{ sha256 }}
+  patches:
+    - use-conda-forge-ABI.patch
+
+build:
+  number: 2
+
+requirements:
+  build:
+    - ${{ compiler("cxx") }}
+    - ${{ stdlib("c") }}
+    - cmake
+    - ninja
+    - ispc
+  host:
+    - tbb-devel
+  run_exports:
+    - ${{ pin_subpackage(name|lower, upper_bound='x.x') }}
+
+tests:
+  - package_contents:
+      lib:
+        - embree4
+
+about:
+  homepage: https://www.embree.org
+  repository: https://github.com/RenderKit/embree
+  documentation: https://github.com/RenderKit/embree/blob/v${{ version }}/readme.pdf
+  license: Apache-2.0
+  license_file: LICENSE.txt
+  summary: High Performance Ray Tracing Kernels
+  description: |
+    Intel® Embree is a high-performance ray tracing library developed at Intel, which is released as open source under the Apache 2.0 license.
+    Intel® Embree supports x86 CPUs under Linux, macOS, and Windows; ARM CPUs on Linux and macOS; as well as Intel® GPUs under Linux and Windows.
+
+    Intel® Embree targets graphics application developers to improve the performance of photo-realistic rendering applications.
+    Embree is optimized towards production rendering, by putting focus on incoherent ray performance, high quality acceleration structure construction, a rich feature set, accurate primitive intersection, and low memory consumption.
+
+extra:
+  recipe-maintainers:
+    - joaander
+    - scopatz
+    - Xarthisius
+    - eunos-1128
