@@ -5,7 +5,7 @@ setlocal EnableDelayedExpansion
 set "TBBROOT=%LIBRARY_PREFIX%"
 
 if "%target_platform%"=="win-64" (
-    set "max_isa=AVX2"
+    set "max_isa=AVX512"
 ) else if "%target_platform%"=="win-arm64" (
     set "max_isa=NEON"
 )
