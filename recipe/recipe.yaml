@@ -33,7 +33,7 @@ requirements:
 tests:
   - package_contents:
       lib:
-        - embree
+        - embree4
 
 about:
   homepage: https://www.embree.org
