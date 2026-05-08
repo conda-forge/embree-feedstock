@@ -1,0 +1,52 @@
+schema_version: 1
+
+context:
+  name: embree
+  version: "4.4.1"
+  sha256: dcf338cc61b636c871ccf370e673bfd380c5ecb71ce49ad50f28e1d4ec9995dc
+
+package:
+  name: ${{ name }}
+  version: ${{ version }}
+
+source:
+  url: https://github.com/embree/embree/archive/v${{ version }}.tar.gz
+  sha256: ${{ sha256 }}
+  file_name: ${{ version }}.tar.gz
+  patches:
+    - use-conda-forge-ABI.patch
+
+build:
+  number: 2
+
+requirements:
+  build:
+    - ${{ compiler('cxx') }}
+    - ${{ stdlib("c") }}
+    - cmake
+    - if: unix
+      then: make
+    - ispc
+  host:
+    - tbb
+    - tbb-devel
+  run_exports:
+    - ${{ pin_subpackage('embree', upper_bound='x.x') }}
+
+tests:
+  - script:
+      - if: not win
+        then: test -f "${PREFIX}/lib/libembree4${SHLIB_EXT}"
+
+about:
+  license: Apache-2.0
+  license_file: LICENSE.txt
+  summary: High Performance Ray Tracing Kernels
+  homepage: https://embree.github.io/
+
+extra:
+  recipe-maintainers:
+    - joaander
+    - scopatz
+    - Xarthisius
+    - eunos-1128
