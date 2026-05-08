@@ -1,18 +1,17 @@
 schema_version: 1
 
 context:
-  name: embree
+  name: Embree
   version: "4.4.1"
   sha256: dcf338cc61b636c871ccf370e673bfd380c5ecb71ce49ad50f28e1d4ec9995dc
 
 package:
-  name: ${{ name }}
+  name: ${{ name|lower }}
   version: ${{ version }}
 
 source:
-  url: https://github.com/embree/embree/archive/v${{ version }}.tar.gz
+  url: https://github.com/RenderKit/embree/archive/refs/tags/v${{ version }}.tar.gz
   sha256: ${{ sha256 }}
-  file_name: ${{ version }}.tar.gz
   patches:
     - use-conda-forge-ABI.patch
 
@@ -24,25 +23,31 @@ requirements:
     - ${{ compiler('cxx') }}
     - ${{ stdlib("c") }}
     - cmake
-    - if: unix
-      then: make
+    - ninja
     - ispc
   host:
-    - tbb
     - tbb-devel
   run_exports:
-    - ${{ pin_subpackage('embree', upper_bound='x.x') }}
+    - ${{ pin_subpackage(name|lower, upper_bound='x.x') }}
 
 tests:
-  - script:
-      - if: not win
-        then: test -f "${PREFIX}/lib/libembree4${SHLIB_EXT}"
+  - package_contents:
+      lib:
+        - embree
 
 about:
+  homepage: https://www.embree.org
+  repository: https://github.com/RenderKit/embree
+  documentation: https://github.com/RenderKit/embree/blob/v${{ version }}/readme.pdf
   license: Apache-2.0
   license_file: LICENSE.txt
   summary: High Performance Ray Tracing Kernels
-  homepage: https://embree.github.io/
+  description: |
+    Intel® Embree is a high-performance ray tracing library developed at Intel, which is released as open source under the Apache 2.0 license. 
+    Intel® Embree supports x86 CPUs under Linux, macOS, and Windows; ARM CPUs on Linux and macOS; as well as Intel® GPUs under Linux and Windows.
+
+    Intel® Embree targets graphics application developers to improve the performance of photo-realistic rendering applications. 
+    Embree is optimized towards production rendering, by putting focus on incoherent ray performance, high quality acceleration structure construction, a rich feature set, accurate primitive intersection, and low memory consumption.
 
 extra:
   recipe-maintainers:
