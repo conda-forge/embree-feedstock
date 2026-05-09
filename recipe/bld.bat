@@ -10,6 +10,7 @@ set "TBBROOT=%LIBRARY_PREFIX%"
 :: Configure
 cmake ../ ^
       -G "NMake Makefiles" ^
+      -DCMAKE_MINIMUM_REQUIRED=3.5 ^
       -DCMAKE_INSTALL_PREFIX=%LIBRARY_PREFIX% ^
       -DCMAKE_INSTALL_LIBDIR=lib ^
       -DCMAKE_BUILD_TYPE=Release ^
