@@ -1,0 +1,9 @@
+# Pin clang<19 on macOS: v3 doesn't include RenderKit/embree#486 fix
+c_compiler_version:        # [osx]
+  - 18                     # [osx]
+cxx_compiler_version:      # [osx]
+  - 18                     # [osx]
+clang_compiler_version:    # [osx]
+  - 18                     # [osx]
+clangxx_compiler_version:  # [osx]
+  - 18                     # [osx]
