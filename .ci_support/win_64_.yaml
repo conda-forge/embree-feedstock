@@ -8,7 +8,5 @@ cxx_compiler:
 - vs2022
 target_platform:
 - win-64
-tbb:
-- '2022'
 tbb_devel:
 - '2022'
