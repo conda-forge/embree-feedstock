@@ -18,7 +18,5 @@ macos_machine:
 - arm64-apple-darwin20.0.0
 target_platform:
 - osx-arm64
-tbb:
-- '2022'
 tbb_devel:
 - '2022'

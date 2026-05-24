@@ -3,11 +3,21 @@ About embree-feedstock
 
 Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/embree-feedstock/blob/main/LICENSE.txt)
 
-Home: https://embree.github.io/
+Home: https://www.embree.org/
 
 Package license: Apache-2.0
 
 Summary: High Performance Ray Tracing Kernels
+
+Development: https://github.com/RenderKit/embree
+
+Documentation: https://github.com/RenderKit/embree/blob/v4.4.1/readme.pdf
+
+Intel® Embree is a high-performance ray tracing library developed at Intel, which is released as open source under the Apache 2.0 license.
+Intel® Embree supports x86 CPUs under Linux, macOS, and Windows; ARM CPUs on Linux and macOS; as well as Intel® GPUs under Linux and Windows.
+
+Intel® Embree targets graphics application developers to improve the performance of photo-realistic rendering applications.
+Embree is optimized towards production rendering, by putting focus on incoherent ray performance, high quality acceleration structure construction, a rich feature set, accurate primitive intersection, and low memory consumption.
 
 Current build status
 ====================
