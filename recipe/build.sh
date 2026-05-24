@@ -9,7 +9,7 @@ if [[ "${target_platform}" == *"linux-64" ]] ; then
 elif [[ "${target_platform}" == "osx-64" ]]; then
     max_isa="AVX2"
 elif [[ "${target_platform}" == "linux-aarch64" ]]; then
-    max_isa="NEON"
+    max_isa="NEON2X"
 elif [[ "${target_platform}" == "osx-arm64" ]]; then
     max_isa="NEON2X"
 fi
