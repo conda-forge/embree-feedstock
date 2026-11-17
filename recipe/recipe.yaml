@@ -2,8 +2,8 @@ schema_version: 1
 
 context:
   name: Embree
-  version: "4.4.1"
-  sha256: dcf338cc61b636c871ccf370e673bfd380c5ecb71ce49ad50f28e1d4ec9995dc
+  version: "4.5.0"
+  sha256: 6692fdf2b55831ac58732459443336d709974051d7ec642b3e1fcf06271b5eea
 
 package:
   name: ${{ name|lower }}
@@ -16,7 +16,7 @@ source:
     - use-conda-forge-ABI.patch
 
 build:
-  number: 4
+  number: 0
 
 requirements:
   build:
