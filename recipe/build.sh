@@ -17,6 +17,8 @@ fi
 # Configure
 cmake -S . -B build -G Ninja \
     ${CMAKE_ARGS} \
+    -DCMAKE_AR="$(command -v "${AR:-ar}")" \
+    -DCMAKE_RANLIB="$(command -v "${RANLIB:-ranlib}")" \
     -DBUILD_SHARED_LIBS=ON \
     -DEMBREE_IGNORE_CMAKE_CXX_FLAGS=OFF \
     -DEMBREE_TUTORIALS=OFF \
